@@ -13,7 +13,8 @@ const Login = () => {
   const [addTodo, { data }] = useMutation(LOGIN);
   if (data) {
     console.log(data);
-    document.cookie = "token=" + data.login;
+    // we don't set the cookie manually anymore
+    // document.cookie = "token=" + data.login;
   }
   return (
     <>

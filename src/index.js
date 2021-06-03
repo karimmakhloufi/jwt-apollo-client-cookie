@@ -6,25 +6,15 @@ import reportWebVitals from "./reportWebVitals";
 
 import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client/react";
-import { setContext } from "@apollo/client/link/context";
 
-const httpLink = createHttpLink({
-  uri: "http://localhost:4000",
-});
-
-const authLink = setContext((_, { headers }) => {
-  const token = document.cookie.split("=")[1];
-  return {
-    headers: {
-      ...headers,
-      authorization: token,
-    },
-  };
+const link = createHttpLink({
+  uri: "http://localhost:4000/graphql",
+  credentials: "include",
 });
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  link: authLink.concat(httpLink),
+  link,
 });
 
 ReactDOM.render(
