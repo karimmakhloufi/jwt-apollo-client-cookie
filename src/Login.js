@@ -13,6 +13,8 @@ const Login = () => {
   const [addTodo, { data }] = useMutation(LOGIN);
   if (data) {
     console.log(data);
+    // cookie is not accessible by javascript anymore (httpOnly option is true)
+    console.log("cookies", document.cookie);
     // we don't set the cookie manually anymore
     // document.cookie = "token=" + data.login;
   }
