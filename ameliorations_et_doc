@@ -1,0 +1,42 @@
+Expiration du cookie
+Gestion de plusieurs cookies
+
+Logout (suppression du cookie + clear du cache apollo)
+
+Token + refresh token au lieu d'un seul token
+- Spec 0Auth 2.0 : https://datatracker.ietf.org/doc/html/rfc6749#section-1.4
+- Vidéo d'explication: https://youtu.be/3Po7SOF9jkA
+
+Auth0 qui est un service qui gère cette complexité à notre place
+Vidéos d'explication: https://auth0.com/docs/videos/get-started-series
+
+
+Ajouter un role dans le token pour des permissions plus fines
+Ajouter une expiration dans le token
+
+Documentation 
+Debugger jwt: https://jwt.io/#debugger-io
+
+Typescript
+
+Documentation:
+- Graphql:
+    - https://www.howtographql.com/graphql-js/6-authentication/
+    - https://stackoverflow.com/questions/50189364/shouldnt-the-login-be-a-query-in-graphql
+- Server: 
+    - https://www.apollographql.com/docs/apollo-server/security/authentication/
+    - https://www.apollographql.com/docs/apollo-server/data/resolvers/#the-context-argument
+    - https://www.apollographql.com/docs/apollo-server/data/errors/
+- Client: 
+    - https://www.apollographql.com/docs/react/networking/authentication/#header
+- Graphql playground:
+    - https://blog.logrocket.com/complete-guide-to-graphql-playground/
+- Bcrypt: https://www.npmjs.com/package/bcrypt
+- jwt: https://jwt.io/introduction et https://jwt.io/#debugger-io
+- jsonwebtoken: https://www.npmjs.com/package/jsonwebtoken
+- Pourquoi passer le token dans le header :
+    - https://medium.com/locastic/react-native-cookie-based-authentication-80ee18f4c71b
+    - https://github.com/graphql/graphql-playground/issues/1073
+    - Ubeeqo
+    - Pour le faire quand même avec apollo client: https://www.apollographql.com/docs/react/networking/authentication/#cookie
+    
