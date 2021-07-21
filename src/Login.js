@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useMutation, gql } from "@apollo/client";
+import { useLazyQuery, gql } from "@apollo/client";
 
 const LOGIN = gql`
-  mutation login($email: String!, $password: String!) {
+  query login($email: String!, $password: String!) {
     login(email: $email, password: $password)
   }
 `;
@@ -10,13 +10,10 @@ const LOGIN = gql`
 const Login = () => {
   const [email, setEmail] = useState("admin@gmail.com");
   const [password, setPassword] = useState("p4ssw0rd");
-  const [addTodo, { data }] = useMutation(LOGIN);
+  const [getToken, { data }] = useLazyQuery(LOGIN);
   if (data) {
     console.log(data);
-    // cookie is not accessible by javascript anymore (httpOnly option is true)
-    console.log("cookies", document.cookie);
-    // we don't set the cookie manually anymore
-    // document.cookie = "token=" + data.login;
+    localStorage.setItem("token", data.login);
   }
   return (
     <>
@@ -25,7 +22,7 @@ const Login = () => {
       <button
         onClick={async () => {
           try {
-            await addTodo({ variables: { email: email, password: password } });
+            await getToken({ variables: { email: email, password: password } });
           } catch (err) {
             console.log("Handle me", err);
           }
